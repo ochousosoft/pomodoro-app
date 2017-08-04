@@ -1,0 +1,35 @@
+<!-- Generated template for the NewPomodoroComponent component -->
+<div>
+  <h1>New Pomodoro</h1>
+
+  <ion-item>
+    <ion-label>Project</ion-label>
+    <ion-select [(ngModel)]="gender">
+      <ion-option *ngFor="let project of projects" [value]="project.id">{{project.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Project</ion-label>
+    <ion-select [(ngModel)]="gender">
+      <ion-option *ngFor="let task of tasks" [value]="task.id">{{task.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button full (click)="cancel()">Cancelar</button>
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button full (click)="continue()">OK</button>
+      </ion-col>
+      <ion-col col-2>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

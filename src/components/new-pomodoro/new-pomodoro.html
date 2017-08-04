@@ -4,14 +4,14 @@
 
   <ion-item>
     <ion-label>Project</ion-label>
-    <ion-select [(ngModel)]="gender">
+    <ion-select [(ngModel)]="project_id">
       <ion-option *ngFor="let project of projects" [value]="project.id">{{project.name}}</ion-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-label>Project</ion-label>
-    <ion-select [(ngModel)]="gender">
+    <ion-label>Task</ion-label>
+    <ion-select [(ngModel)]="task_id">
       <ion-option *ngFor="let task of tasks" [value]="task.id">{{task.name}}</ion-option>
     </ion-select>
   </ion-item>

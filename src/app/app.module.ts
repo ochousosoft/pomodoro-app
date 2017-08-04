@@ -24,6 +24,14 @@ import { Constants } from '../providers/config/constants';
 import { UserData } from '../providers/nutmobile/user-data';
 import { DbManager } from '../providers/nutmobile/db-manager';
 
+//Memory service
+import { PomodoroMemory } from '../providers/memory/pomodoro-memory';
+
+//DB service
+import { IntervalsDAO } from '../providers/db/intervals-dao';
+import { ProjectsDAO } from '../providers/db/projects-dao';
+import { TasksDAO } from '../providers/db/tasks-dao';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -54,6 +62,12 @@ import { DbManager } from '../providers/nutmobile/db-manager';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SQLite,
+
+    PomodoroMemory,
+
+    IntervalsDAO,
+    ProjectsDAO,
+    TasksDAO,
 
     DbManager,
     UserData

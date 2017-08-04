@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
 import { ViewController} from 'ionic-angular';
 
+import * as moment from 'moment';
+
+import { PomodoroMemory } from '../../providers/memory/pomodoro-memory';
+
+import { IntervalsDAO } from '../../providers/db/intervals-dao';
+
+
 @Component({
   selector: 'new-pomodoro',
   templateUrl: 'new-pomodoro.html'
 })
 export class NewPomodoroComponent {
 
-  text: string;
+  project_id;
+  task_id;
+  initDate;
+  endDate;
 
   projects = [
     {id:1, name: 'Arousa Norte App'},
@@ -28,9 +38,11 @@ export class NewPomodoroComponent {
   ];
 
   constructor(
-    private viewCtrl: ViewController
+    private viewCtrl: ViewController,
+    private pomodoroMem: PomodoroMemory,
+    private intervalsDAO: IntervalsDAO
   ) {
-
+    this.initDate = moment().format('YYYY-MM-DD HH:mm:ss');
   }
 
   cancel(){
@@ -38,7 +50,12 @@ export class NewPomodoroComponent {
   }
 
   continue(){
-    this.viewCtrl.dismiss();
+    let interval = {init_date: this.initDate, end_date:null, task_id: this.task_id};
+    this.intervalsDAO.insertData(interval).then(result=>{
+      this.pomodoroMem.set(result.rows[0]);
+      this.viewCtrl.dismiss();
+    });
+
   }
 
 }

@@ -27,12 +27,16 @@ export class IntervalsDAO {
     var statement = "INSERT INTO intervals ("
     + "init_date, "
     + "end_date, "
+    + "status, "
+    + "pomodoro_number, "
     + "task_id "
-    + ") values(?,?,?)";
+    + ") values(?,?,?,?,?)";
     return this.dbManager.executeSql(statement ,
         [
           interval.init_date,
           interval.end_date,
+          interval.status,
+          interval.pomodoro_number,
           interval.task_id
         ]);
   }
@@ -42,12 +46,16 @@ export class IntervalsDAO {
     var statement = "UPDATE intervals "
     + "SET init_date = ?, "
     + "end_date = ?, "
+    + "status = ?, "
+    + "pomodoro_number = ?, "
     + "task_id = ? "
     + " WHERE id = ?";
     return this.dbManager.executeSql(statement ,
         [
           interval.init_date,
           interval.end_date,
+          interval.status,
+          interval.pomodoro_number,
           interval.task_id
         ]);
   }

@@ -39,6 +39,13 @@ export class DbSchema {
           "ALTER TABLE intervals ADD COLUMN status INTEGER DEFAULT 0;"
         ]
       },
+
+      {
+        version : '0.0.4',
+        sql : [
+          "ALTER TABLE intervals ADD COLUMN pomodoro_number INTEGER DEFAULT 1;"
+        ]
+      },
     ]
   }
 

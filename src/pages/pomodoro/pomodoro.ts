@@ -75,6 +75,8 @@ export class PomodoroPage {
           }
         }
         else{
+          this.currentInterval = null;
+          this.pomodoroMem.set(this.currentInterval);
           this.timerActive = false;
           this.audio.src = 'assets/sounds/lapse-end.mp3';
           this.audio.load();

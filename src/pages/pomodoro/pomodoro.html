@@ -15,20 +15,25 @@
 
 <ion-content padding>
   <progress-bar [progress]="loadProgress" [total]="0" [step]="0"></progress-bar>
-  <p style="text-align: center;font-weight: bold;">
-    {{currentInterval?currentInterval.init_date:''}}
-  </p>
-  <p style="text-align: center;font-weight: bold;">
-    {{current_date?current_date:''}}
-  </p>
-  <p style="text-align: center;font-weight: bold;">
-    {{currentInterval?currentInterval.end_date:''}}
-  </p>
-  <ion-fab bottom right>
+  <div *ngIf="currentInterval">
+      <p style="text-align: center;font-weight: bold;">
+        {{currentInterval?currentInterval.init_date:''}}
+      </p>
+      <p style="text-align: center;font-weight: bold;">
+        {{current_date?current_date:''}}
+      </p>
+      <p style="text-align: center;font-weight: bold;">
+        {{currentInterval?currentInterval.end_date:''}}
+      </p>
+      <p style="text-align: center;">
+        <img style="height: 200px;border-radius: 25px;" src="assets/img/one.jpg" >
+      </p>
+  </div>
+  <ion-fab bottom right *ngIf="!currentInterval">
     <button ion-fab (click)="newPomodoro()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 
-  <ion-fab bottom left>
+  <ion-fab bottom left *ngIf="currentInterval">
     <button color="red" ion-fab (click)="stopInterval()"><ion-icon name="square"></ion-icon></button>
   </ion-fab>
 </ion-content>

@@ -26,7 +26,19 @@ export class DbSchema {
     ],
 
     upgrades :[
+      {
+        version : '0.0.2',
+        sql : [
+          "ALTER TABLE intervals ADD COLUMN task_id TEXT;"
+        ]
+      },
 
+      {
+        version : '0.0.3',
+        sql : [
+          "ALTER TABLE intervals ADD COLUMN status INTEGER DEFAULT 0;"
+        ]
+      },
     ]
   }
 

@@ -42,7 +42,7 @@ export class NewPomodoroComponent {
     private pomodoroMem: PomodoroMemory,
     private intervalsDAO: IntervalsDAO
   ) {
-    this.initDate = moment().format('YYYY-MM-DD HH:mm:ss');
+
   }
 
   cancel(){
@@ -50,9 +50,12 @@ export class NewPomodoroComponent {
   }
 
   continue(){
-    let interval = {init_date: this.initDate, end_date:null, task_id: this.task_id};
+    this.initDate = moment().format('YYYY-MM-DD HH:mm:ss');
+    this.endDate = moment(this.initDate).add(1, 'minutes').format('YYYY-MM-DD HH:mm:ss');
+    let interval:any = {init_date: this.initDate, end_date:this.endDate, task_id: this.task_id};
     this.intervalsDAO.insertData(interval).then(result=>{
-      this.pomodoroMem.set(result.rows[0]);
+      interval.id = result.insertedId;
+      this.pomodoroMem.set(interval);
       this.viewCtrl.dismiss();
     });
 

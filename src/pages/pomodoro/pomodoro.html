@@ -14,9 +14,21 @@
 
 
 <ion-content padding>
-  <progress-bar></progress-bar>
-
+  <progress-bar [progress]="loadProgress" [total]="0" [step]="0"></progress-bar>
+  <p style="text-align: center;font-weight: bold;">
+    {{currentInterval?currentInterval.init_date:''}}
+  </p>
+  <p style="text-align: center;font-weight: bold;">
+    {{current_date?current_date:''}}
+  </p>
+  <p style="text-align: center;font-weight: bold;">
+    {{currentInterval?currentInterval.end_date:''}}
+  </p>
   <ion-fab bottom right>
     <button ion-fab (click)="newPomodoro()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-fab bottom left>
+    <button color="red" ion-fab (click)="stopInterval()"><ion-icon name="square"></ion-icon></button>
   </ion-fab>
 </ion-content>

@@ -18,6 +18,10 @@ export class IntervalsDAO {
     return this.dbManager.executeSql("SELECT * FROM intervals order by id  DESC", []);
   }
 
+  public findCurrent() {
+    return this.dbManager.executeSql("SELECT * FROM intervals WHERE status = 0 order by id  DESC", []);
+  }
+
   public insertData(interval: any): any{
 
     var statement = "INSERT INTO intervals ("

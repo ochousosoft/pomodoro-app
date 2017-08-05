@@ -3,8 +3,8 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import * as moment from 'moment';
 import { NewPomodoroComponent } from '../../components/new-pomodoro/new-pomodoro';
 import { PomodoroMemory } from '../../providers/memory/pomodoro-memory';
-
 import { IntervalsDAO } from '../../providers/db/intervals-dao';
+import { PomodoroProvider } from '../../providers/pomodoro.provider';
 
 @IonicPage()
 @Component({
@@ -26,7 +26,8 @@ export class PomodoroPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private pomodoroMem: PomodoroMemory,
-    private intervalsDAO: IntervalsDAO
+    private intervalsDAO: IntervalsDAO,
+    private promodoroProvider: PomodoroProvider
   ) {
 
   }
@@ -75,6 +76,10 @@ export class PomodoroPage {
           }
         }
         else{
+          this.currentInterval.status = 1;
+
+          this.promodoroProvider.saveInterval(this.currentInterval);
+
           this.currentInterval = null;
           this.pomodoroMem.set(this.currentInterval);
           this.timerActive = false;

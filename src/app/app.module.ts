@@ -32,6 +32,9 @@ import { IntervalsDAO } from '../providers/db/intervals-dao';
 import { ProjectsDAO } from '../providers/db/projects-dao';
 import { TasksDAO } from '../providers/db/tasks-dao';
 
+
+import { PomodoroProvider } from '../providers/pomodoro.provider';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -70,7 +73,9 @@ import { TasksDAO } from '../providers/db/tasks-dao';
     TasksDAO,
 
     DbManager,
-    UserData
+    UserData,
+
+    PomodoroProvider
   ]
 })
 export class AppModule {}

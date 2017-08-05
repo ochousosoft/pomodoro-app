@@ -56,8 +56,12 @@ export class IntervalsDAO {
           interval.end_date,
           interval.status,
           interval.pomodoro_number,
-          interval.task_id
-        ]);
+          interval.task_id,
+          interval.id
+        ])
+        .catch(err=>{
+          console.log(err);
+        });
   }
 
 }

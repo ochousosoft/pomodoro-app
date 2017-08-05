@@ -5,7 +5,7 @@ import * as moment from 'moment';
 
 import { PomodoroMemory } from '../../providers/memory/pomodoro-memory';
 
-import { IntervalsDAO } from '../../providers/db/intervals-dao';
+import { PomodoroProvider } from '../../providers/pomodoro.provider';
 
 
 @Component({
@@ -40,7 +40,7 @@ export class NewPomodoroComponent {
   constructor(
     private viewCtrl: ViewController,
     private pomodoroMem: PomodoroMemory,
-    private intervalsDAO: IntervalsDAO
+    private pomodoroProvider: PomodoroProvider
   ) {
 
   }
@@ -53,8 +53,8 @@ export class NewPomodoroComponent {
     this.initDate = moment().format('YYYY-MM-DD HH:mm:ss');
     this.endDate = moment(this.initDate).add(1, 'minutes').format('YYYY-MM-DD HH:mm:ss');
     let interval:any = {init_date: this.initDate, end_date:this.endDate, task_id: this.task_id, status: 0, pomodoro_number: 1};
-    this.intervalsDAO.insertData(interval).then(result=>{
-      interval.id = result.insertedId;
+    this.pomodoroProvider.saveInterval(interval).then(result=>{
+      interval.id = result;
       this.pomodoroMem.set(interval);
       this.viewCtrl.dismiss();
     });

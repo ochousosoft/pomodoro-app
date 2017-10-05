@@ -13,6 +13,7 @@ import { MyApp } from './app.component';
 //Pages
 import { HomePage } from '../pages/home/home';
 import { PomodoroPage } from '../pages/pomodoro/pomodoro';
+import { SummaryPage } from '../pages/summary/summary';
 //Components
 import { NewPomodoroComponent } from '../components/new-pomodoro/new-pomodoro';
 import { ProgressBarComponent} from '../components/progress-bar/progress-bar';
@@ -40,7 +41,7 @@ import { PomodoroProvider } from '../providers/pomodoro.provider';
     MyApp,
     HomePage,
     PomodoroPage,
-
+    SummaryPage,
 
     ProgressBarComponent,
     NewPomodoroComponent
@@ -56,7 +57,7 @@ import { PomodoroProvider } from '../providers/pomodoro.provider';
     MyApp,
     HomePage,
     PomodoroPage,
-
+    SummaryPage,
 
     NewPomodoroComponent
   ],
